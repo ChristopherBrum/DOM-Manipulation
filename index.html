@@ -1,374 +1,54 @@
-<!-- <!doctype html>
-<html lang="en-US">
-  <head>
-    <title>Empty Page</title>
-  </head>
-  <body>
-  </body>
-</html> -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>Nutrition Label</title>
-    <style>
-      html {
-        font-size: 28px;
-      }
+<!doctype html>
+<html>
 
-      body {
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 1rem;
-      }
+<head>
+  <title>Tracing the DOM Tree</title>
+</head>
 
-      article {
-        box-sizing: border-box;
-        width: 680px;
-        height: auto;
-        font-size: 1rem;
-        border: 2px solid black;
-        padding: 10px 15px 10px 15px;
-        margin: 0;
-      }
+<body>
+  <article id="1">1
+    <header id="2">2
+      <span id="3">3
+        <a href="#" id="4">4</a>
+      </span>
+    </header>
+    <main id="5">5
+      <section id="6">6
+        <p id="7">7
+          <span id="8">8
+            <strong id="9">9
+              <a href="#" id="10">10</a>
+            </strong>
+          </span>
+        </p>
+      </section>
+      <section id="11">11
+        <p id="12">12
+          <span id="13">13
+            <strong id="14">14
+              <a href="#" id="15">15</a>
+            </strong>
+          </span>
+        </p>
+        <p id="16">16
+          <span id="17">17
+            <strong id="18">18
+              <a href="#" id="19">19</a>
+            </strong>
+          </span>
+          <span id="20">20
+            <strong id="21">21
+              <a href="#" id="22">22</a>
+            </strong>
+          </span>
+        </p>
+      </section>
+    </main>
+    <footer id="23">23
+      <p id="24">24</p>
+    </footer>
+  </article>
+  <script src="./demo.js"></script>
+</body>
 
-      /*Add border below header and adjust sizing*/
-      header {
-        border-bottom: 15px solid black;
-        padding-bottom: 5px;
-      }
-
-      header h1 {
-        font-family: Helvetica, Arial, sans-serif;
-        font-size: 2rem;
-        margin: 0;
-      }
-
-      header p {
-        margin: 0;
-        padding: 0;
-      }
-
-      header h2 {
-        font-family: Helvetica Black, Arial, sans-serif;
-        font-size: 1rem;
-        border-top: 30px solid black;
-        border-bottom: 1px solid black;
-        padding: 10px 0;
-        margin: 5px 0;
-      }
-
-      /* Allow dl in header to be side by side */
-      header dl { 
-        display: inline-block;
-        width: 50%;
-        margin: 0;
-      }
-
-      /* Selects calories from fat */
-      header dl:last-of-type { 
-        text-align: right; 
-      }
-
-      /* Selects calories */
-      header dl:first-of-type dt:first-of-type { 
-        font-weight: bold;
-      }
-
-      /* Select first table */
-      table:first-of-type { 
-        font-family: Helvetica, Arial, sans-serif;
-        border-collapse: collapse;
-        margin: 10px 0;
-        width: 100%;
-      }
-
-      /* Make dl and the elements inside it all inline-block */
-      dl, dt, dd{
-        display: inline-block;
-        margin: 0;
-      }
-
-      /* Add vertical padding around each td column of the tables*/
-      tbody td {
-        padding: 2px 0;
-      }
-
-      /* Add vertical padding around each th column of the tables*/
-      tbody th {
-        padding: 2px 0;
-      }
-
-      /* Adding a line to the rows in first table */
-      table:first-of-type tr td, th {
-        border-top: 1px solid black;
-      }
-
-      /* Selects % Daily Value* */
-      thead th { 
-        text-align: right;
-        border-top: none;
-        border-bottom: 1px solid black;
-        padding: 1px;
-      }
-
-      /* Veritically align the superscript */
-      sup {
-        vertical-align: 3px;
-      }
-
-      /* Selects all percentages of table 1 */
-      table:first-of-type tbody tr td:last-of-type { 
-        text-align: right;
-      }
-
-      /* Select first group of percentages in first table*/
-      table:first-of-type tbody:first-of-type td:last-of-type { 
-        font-weight: bold;
-      }
-
-      /* Create black border above body2 of table 1*/
-      table:first-of-type tbody:last-of-type { 
-        border-top: 20px solid black;
-      }
-
-      /* Achieve an indented effect for rows with indent attribute*/
-      /* Make the columns with indent attribute 1rem wide*/
-      /* Then remove the border on top of that indent column */
-      table:first-of-type td.indent {
-        width: 1rem;
-        border-top: none;
-      }
-
-      /* Make the description term in 1st body of table 1 bold */
-      table:first-of-type tbody:first-of-type td[colspan="2"] dt {
-        font-weight: bold;
-      }
-
-      /* Adjust tfoot of first table */
-      /* Pull first line of text*/
-      tfoot td:last-of-type {
-        font-weight: normal;
-        font-size: 0.9rem;
-        padding: 0.5rem 0 0.15rem 0.7rem;
-        text-align: left;
-        text-indent: -0.7rem;
-      }
-
-      /* Remove line below tfoot of table 1 */
-      table:first-of-type tfoot td {
-        border-bottom: none;
-      }
-
-      /* Adjust 2nd table size */
-      table:nth-of-type(2) {
-        font-size: 0.8rem;
-        width: 100%;
-        border-collapse: collapse;
-        margin: 5px 0;
-      }
-
-      /* Add line below the thead of table 2 */
-      /* Adjust width of thead th elements*/
-      table:last-of-type thead th {
-        width: 37%;
-        font-weight: normal;
-        text-align: left;
-        border-bottom: 1px solid black;
-      }
-
-      /* Make the elements starting from 2nd th element narrower*/
-      table:last-of-type thead th:nth-of-type(n+2) {
-        width: 21%;
-      }
-
-      /* Indent columns in 2nd table*/
-      table:last-of-type td.indent {
-        text-indent: 1.2rem;
-      }
-    </style>
-  </head>
-  <body>
-    <article>
-      <!--header and description-->
-      <header>
-        <h1>Nutrition Facts</h1>
-        <p>Serving Size 2/3 cup (55g)</p>
-        <p>Servings Per Container About 8</p>
-      <!--Amount per serving section-->
-        <h2>Amount Per Serving</h2>
-        <dl>
-          <dt>Calories</dt>
-          <dd>230</dd>
-        </dl><dl>
-          <dt>Calories from Fat</dt>
-          <dd>40</dd>
-        </dl>
-      </header>
-        <!--Nutrients and minimum percentages table-->
-      <table>
-        <thead>
-          <tr>
-            <th colspan="3">% Daily Value<sup>*</sup></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td colspan="2">
-              <dl>
-                <dt>Total Fat</dt>
-                <dd>8g</dd>
-              </dl>
-            </td>
-            <td>12%</td>
-          </tr>
-          <tr>
-            <td class="indent"></td>
-            <td>
-              <dl>
-                <dt>Saturated Fat</dt>
-                <dd>1g</dd>
-              </dl>
-            </td>
-            <td>5%</td>
-          </tr>
-          <tr>
-            <td class="indent"></td>
-            <td>
-              <dl>
-                <dt><em>Trans</em> Fat</dt>
-                <dd>0g</dd>
-              </dl>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <dl>
-                <dt>Cholesterol</dt>
-                <dd>0mg</dd>
-              </dl>
-            </td>
-            <td>0%</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <dl>
-                <dt>Sodium</dt>
-                <dd>160mg</dd>
-              </dl>
-            </td>
-            <td>7%</td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <dl>
-                <dt>Total Carbohydrate</dt>
-                <dd>37g</dd>
-              </dl>
-            </td>
-            <td>12%</td>
-          </tr>
-          <tr>
-            <td class="indent"></td>
-            <td>
-              <dl>
-                <dt>Dietary Fiber</dt>
-                <dd>4g</dd>
-              </dl>
-            </td>
-            <td>16%</td>
-          </tr>
-          <tr>
-            <td class="indent"></td>
-            <td>
-              <dl>
-                <dt>Sugars</dt>
-                <dd>1g</dd>
-              </dl>
-            </td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <dl>
-                <dt>Protein</dt>
-                <dd>3g</dd>
-              </dl>
-            </td>
-            <td></td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td colspan="2">Vitamin A</td>
-            <td>10%</td>
-          </tr>
-          <tr>
-            <td colspan="2">Vitamin C</td>
-            <td>8%</td>
-          </tr>
-          <tr>
-            <td colspan="2">Calcium</td>
-            <td>20%</td>
-          </tr>
-          <tr>
-            <td colspan="2">Iron</td>
-            <td>45%</td>
-          </tr>
-        </tbody>
-        <!-- Description of Percent Daily Values-->
-        <tfoot>
-          <tr>
-             <td colspan="3">* Percent Daily Values are based on a 2,000 calorie diet. Your daily value may be higher or lower depending on your calorie needs.</td>
-          </tr>
-        </tfoot>
-      </table>
-
-      <!--Table for 2000 Calorie diet-->
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th>Calories:</th>
-            <th>2,000</th>
-            <th>2,500</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Total Fat</td>
-            <td>Less than</td>
-            <td>65g</td>
-            <td>80g</td>
-          </tr>
-          <tr>
-            <td class="indent">Sat Fat</td>
-            <td>Less than</td>
-            <td>20g</td>
-            <td>25g</td>
-          </tr><tr>
-            <td>Cholesterol</td>
-            <td>Less than</td>
-            <td>300mg</td>
-            <td>300mg</td>
-          </tr><tr>
-            <td>Sodium</td>
-            <td>Less than</td>
-            <td>2,400mg</td>
-            <td>2,400mg</td>
-          </tr><tr>
-            <td>Total Carbohydrate</td>
-            <td></td>
-            <td>300g</td>
-            <td>375g</td>
-          </tr><tr>
-            <td class="indent">Dietary Fiber</td>
-            <td></td>
-            <td>25g</td>
-            <td>30g</td>
-          </tr>
-        </tbody>
-      </table>
-    </article>
-  </body>
 </html>

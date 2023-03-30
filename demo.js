@@ -38,26 +38,3 @@
 //   addClassNameToParagraphsInCollection(collection);
 // });
 
-function childNodes(id) {
-  let parent = document.getElementById(id);
-  let directCount = parent.childNodes.length;
-  let indirectCount = 0;
-
-  for (let i = 0; i < directCount; i += 1) {
-    for (let j = 0; j < parent.childNodes[i].childNodes.length; j += 1) {
-      console.log(parent.childNodes[i].childNodes)
-      indirectCount += parent.childNodes[i].childNodes.length;
-    }
-  }
-
-  console.log([directCount, indirectCount])
-}
-
-
-// sample output
-childNodes(1);
-// = [9, 12]
-// childNodes(4);
-// // = [3, 1]
-// childNodes(9);
-// // = [1, 1]

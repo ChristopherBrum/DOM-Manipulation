@@ -392,7 +392,7 @@
 document.addEventListener('DOMContentLoaded', event => {
   const textarea = document.body.querySelector('textarea');
 
-  textarea.addEventListener('keydown', event => {
+  textarea.addEventListener('keydown', function(event) {
     let chars = textarea.value.length;
     let remainingChars = 140 - chars;
     const paragraph = document.querySelector('.counter');
@@ -405,5 +405,7 @@ document.addEventListener('DOMContentLoaded', event => {
     } else {
       paragraph.classList.remove('invalid');
     }
+
+    console.log(this);
   })
 });

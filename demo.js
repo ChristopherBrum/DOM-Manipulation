@@ -389,23 +389,31 @@
 //   });
 // });
 
-document.addEventListener('DOMContentLoaded', event => {
-  const textarea = document.body.querySelector('textarea');
+// document.addEventListener('DOMContentLoaded', event => {
+//   const textarea = document.body.querySelector('textarea');
 
-  textarea.addEventListener('keydown', function(event) {
-    let chars = textarea.value.length;
-    let remainingChars = 140 - chars;
-    const paragraph = document.querySelector('.counter');
-    let invalid = remainingChars < 0;
+//   textarea.addEventListener('keydown', function(event) {
+//     let chars = textarea.value.length;
+//     let remainingChars = 140 - chars;
+//     const paragraph = document.querySelector('.counter');
+//     let invalid = remainingChars < 0;
 
-    paragraph.textContent = String(remainingChars) + ' characters remaining';
+//     paragraph.textContent = String(remainingChars) + ' characters remaining';
 
-    if (invalid) {
-      paragraph.classList.add('invalid');
-    } else {
-      paragraph.classList.remove('invalid');
-    }
+//     if (invalid) {
+//       paragraph.classList.add('invalid');
+//     } else {
+//       paragraph.classList.remove('invalid');
+//     }
 
-    console.log(this);
-  })
-});
+//     console.log(this);
+//   })
+// });
+
+console.log("Synchronous #1");
+
+setTimeout(_ => console.log("Timeout #2"), 0);
+
+Promise.resolve().then(_ => console.log("Promise #3"));
+
+console.log("Synchronous #2");

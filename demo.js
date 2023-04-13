@@ -410,10 +410,350 @@
 //   })
 // });
 
-console.log("Synchronous #1");
+// console.log("Synchronous #1");
 
-setTimeout(_ => console.log("Timeout #2"), 0);
+// setTimeout(_ => console.log("Timeout #2"), 0);
 
-Promise.resolve().then(_ => console.log("Promise #3"));
+// Promise.resolve().then(_ => console.log("Promise #3"));
 
-console.log("Synchronous #2");
+// console.log("Synchronous #2");
+
+// const promise = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     reject('Error: Not Launch School')
+//   }, 2000);
+// });
+
+// promise
+//   .catch(text => {
+//     console.log(text);
+//   });
+
+// const promise = new Promise(function (resolve, reject) {
+//   resolve("I am a Promise");
+// });
+
+// promise.then(value => console.log(value));
+// console.log("I am NOT a Promise");
+
+// const promise1 = new Promise((resolve, reject) => {
+//   console.log("foo");
+//   resolve();
+//   console.log("bar");
+// });
+
+// promise1.then(() => {
+//   console.log("baz");
+// });
+
+// console.log("qux");
+
+// const promise = new Promise((resolve, reject) => {
+//   console.log("foo");
+//   reject();
+//   console.log("bar");
+// });
+
+// promise
+//   .then(() => {
+//     console.log("baz");
+//   })
+//   .catch(() => {
+//     console.log("qux");
+//   });
+
+// console.log("abc");
+
+// const promise = new Promise((res, reject) => reject(1));
+// promise
+//   .then((num) => {
+//     console.log(num);
+//     return num + 2;
+//   })
+//   .then((num) => {
+//     console.log(num);
+//     return num + 3;
+//   })
+//   .then((num) => {
+//     console.log(num);
+//     return num + 4;
+//   })
+//   .catch((param) => {
+//     console.log('reject ' + String(param));
+//     return () => { console.log('reject callback') }
+//   })
+//   .finally((num) => {
+//     console.log(num);
+//     return num + 5;
+//   });
+
+//   // logs 1, 3, 6, undefined
+
+// const promise = new Promise((resolve, reject) => {
+//   resolve("Got it!");
+//   reject("Oops.");
+//   resolve("Again!");
+// });
+
+// promise
+//   .then((res) => {
+//     console.log(res);
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+// function after1s(x) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(x);
+//     }, 1000);
+//   });
+// }
+
+// async function test(input) {
+//   const a = await after1s(2);
+//   const b = await after1s(3);
+//   const c = await after1s(4);
+//   return input * a * b * c;
+// }
+
+// let start = new Date() 
+// let startTime = start.getTime();
+
+// test(3).then((value) => {
+//   console.log(value)
+//   let end = new Date() 
+//   let endTime = end.getTime();
+//   console.log(endTime - startTime);
+// });
+
+
+// function after1s(x) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(x);
+//     }, 1000);
+//   });
+// }
+
+// async function test(input) {
+//   const a = await after1s(2);
+//   const b = await after1s(3);
+//   return input * (await a) * (await b);
+// }
+
+// test(3).then((value) => console.log(value));
+
+// function after1s(x, ms) {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(x);
+//     }, ms);
+//   });
+// }
+
+// async function test1(input) {
+//   const a = await after1s(2, 2000);
+//   const b = await after1s(3, 2000);
+//   return input * a * b;
+// }
+
+// async function test2(input) {
+//   const a = await after1s(2, 1000);
+//   const b = await after1s(3, 1000);
+//   return input * a * b;
+// }
+
+// test1(2).then((value) => console.log(value)); // 12 after 4 seconds
+// test2(3).then((value) => console.log(value)); // 18 after 2 sconds
+
+// const testPromise = () => Promise.resolve("1");
+
+// function test1() {
+//   testPromise().then((result) => console.log(result));
+//   console.log("2");
+// }
+
+// function test2() {
+//   console.log("3");
+// }
+
+// test1();
+// test2();
+
+// const test = Promise.resolve("A");
+
+// (async () => {
+//   try {
+//     console.log(await test);
+//   } catch {
+//     console.log("E");
+//   } finally {
+//     console.log("B");
+//   }
+// })();
+
+// const test = Promise.reject("A");
+
+// (async () => {
+//   try {
+//     console.log(await test);
+//   } catch {
+//     console.log("E");
+//   } finally {
+//     console.log("B");
+//   }
+// })();
+
+// function callback1() {
+//   console.log('callback1');
+// }
+
+// function callback2() {
+//   console.log('callback2');
+// }
+
+// function callback3() {
+//   console.log('callback3');
+// }
+
+// function randomizer(...callbacks) {
+//   let secondsEnd = callbacks.length * 2;
+//   let secondsElapsed = 0;
+
+//   callbacks.forEach(callback => {
+//     let randomSeconds = Math.floor(Math.random() * secondsEnd * 1000);
+//     setTimeout(callback, randomSeconds);
+//   });
+
+//   const timeLogger = setInterval(() => {
+//     secondsElapsed += 1;
+//     console.log(secondsElapsed);
+
+//     if (secondsElapsed >= secondsEnd) {
+//       clearInterval(timeLogger);
+//     }
+//   }, 1000)
+// }
+
+// randomizer(callback1, callback2, callback3);
+
+// // Output:
+// // 1
+// // 2
+// // "callback2"
+// // 3
+// // "callback3"
+// // 4
+// // 5
+// // "callback1"
+// // 6
+
+
+// // Without changing the behavior of the following code, remove the call to event.stopPropagation and refactor the result.
+
+// document.querySelector('html').addEventListener('click', (event) => {
+//   const conatiner = document.querySelector('#container')
+  
+//   if (conatiner.contains(event.target)) {
+//     conatiner.style = 'display: none';
+//   }
+// });
+
+// // document.querySelector('#container').addEventListener('click', event => {
+// //   event.stopPropagation();
+// // });
+
+///////////////////////
+
+// function makeBold(element, callback) {
+//   element.style.fontWeight = 'bold';
+  
+//   if (callback && typeof callback === 'function') {
+//     callback(element);
+//   }
+// }
+
+// let sectionElement = document.querySelector('section');
+// const myEvent = new CustomEvent('bolded');
+
+// sectionElement.addEventListener('bolded', e => {
+//   makeBold(sectionElement, (sectionElement, elem => {
+//     elem.classList.add('highlight')
+//   }));
+// })
+
+// sectionElement.dispatchEvent(myEvent);
+
+// console.log(sectionElement.classList.contains('highlight'));
+// // true
+// console.log(sectionElement.style.fontWeight);
+// // "bold"
+
+// let sectionElement = document.querySelector('section');
+
+// function makeBold(element, callback) {
+//   element.style.fontWeight = 'bold';
+//   const myEvent = new CustomEvent('bolded');
+
+//   element.dispatchEvent(myEvent);
+// }
+
+// sectionElement.addEventListener('bolded', e => {
+//   e.target.classList.add('highlight');
+// })
+
+// makeBold(sectionElement)
+
+
+// console.log(sectionElement.classList.contains('highlight'));
+// // true
+// console.log(sectionElement.style.fontWeight);
+// // "bold"
+
+// document.addEventListener('DOMContentLoaded', (e) => {
+//   const main = document.querySelector('main');
+  
+//   main.addEventListener('contextmenu', (e) => {
+//     e.preventDefault();
+//     if (e.target.nodeName === "MAIN") {
+//       alert('MAIN');
+//     } else if (e.target.nodeName === "SECTION") {
+//       alert('SECTION');
+//     }
+//   });
+// });
+
+
+
+document.addEventListener('DOMContentLoaded', (e) => {
+  const classifications = document.getElementById('animal-classifications');
+  const animals = document.getElementById('animals');
+
+  function hideAnimals(targetValue) {
+    const options = animals.children;
+    const numOfOptions = options.length;
+
+    for (let i = 0; i < numOfOptions; i += 1) {
+      console.log(options[i].value, targetValue)
+      if (options[i].value === targetValue) {
+        console.log(options[i]);
+      }
+    }
+  }
+
+  classifications.addEventListener('change', (e) => {
+    let targetIndex = e.target.selectedIndex;
+    let currentValue = e.target.options[targetIndex].value;
+    // console.log(currentValue);
+
+    hideAnimals(currentValue);
+  });
+
+  animals.addEventListener('change', (e) => {
+    let targetIndex = e.target.selectedIndex;
+    let currentValue = e.target.options[targetIndex].value;
+    console.log(currentValue);
+  });
+});

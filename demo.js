@@ -725,60 +725,128 @@
 //   });
 // });
 
-const CLASSIFICATION_OPTIONS = {
-  'Vertebrate': ['Bear', 'Turtle', 'Whale', 'Salmon', 'Ostrich'],
-  'Warm-blooded': ['Bear', 'Whale', 'Ostrich'],
-  'Cold-blooded': ['Salmon', 'Turtle'],
-  'Mammal': ['Bear', 'Whale'],
-  'Bird': ['Ostrich'],
-}
+// const CLASSIFICATION_OPTIONS = {
+//   'Vertebrate': ['Bear', 'Turtle', 'Whale', 'Salmon', 'Ostrich'],
+//   'Warm-blooded': ['Bear', 'Whale', 'Ostrich'],
+//   'Cold-blooded': ['Salmon', 'Turtle'],
+//   'Mammal': ['Bear', 'Whale'],
+//   'Bird': ['Ostrich'],
+// }
 
-const ANIMAL_OPTIONS = {
-  'Bear': ['Vertebrate', 'Warm-blooded', 'Mammal'],
-  'Turtle': ['Vertebrate', 'Cold-blooded'],
-  'Whale': ['Vertebrate', 'Warm-blooded', 'Mammal'],
-  'Salmon': ['Vertebrate', 'Cold-blooded'],
-  'Ostrich': ['Vertebrate', 'Warm-blooded', 'Bird'],
-}
+// const ANIMAL_OPTIONS = {
+//   'Bear': ['Vertebrate', 'Warm-blooded', 'Mammal'],
+//   'Turtle': ['Vertebrate', 'Cold-blooded'],
+//   'Whale': ['Vertebrate', 'Warm-blooded', 'Mammal'],
+//   'Salmon': ['Vertebrate', 'Cold-blooded'],
+//   'Ostrich': ['Vertebrate', 'Warm-blooded', 'Bird'],
+// }
 
-function unhideAll(animals, classifications) {
-  [animals, classifications].forEach(selection => {
-    [...selection.children].forEach(option => {
-      option.removeAttribute('hidden');
-    })
-  });
-}
+// function unhideAll(animals, classifications) {
+//   [animals, classifications].forEach(selection => {
+//     [...selection.children].forEach(option => {
+//       option.removeAttribute('hidden');
+//     })
+//   });
+// }
 
-document.addEventListener('DOMContentLoaded', (e) => {
-  const classifications = document.getElementById('animal-classifications');
-  const animals = document.getElementById('animals');
+// document.addEventListener('DOMContentLoaded', (e) => {
+//   const classifications = document.getElementById('animal-classifications');
+//   const animals = document.getElementById('animals');
 
-  function hideOptions(targetValue, selectionType) {
-    unhideAll(animals, classifications) 
-    let matchingOptions;
+//   function hideOptions(targetValue, selectionType) {
+//     unhideAll(animals, classifications) 
+//     let matchingOptions;
     
-    if (selectionType.id === 'animals') {
-      matchingOptions = CLASSIFICATION_OPTIONS[targetValue];
-    } else if (selectionType.id === 'animal-classifications') {
-      matchingOptions = ANIMAL_OPTIONS[targetValue];
-    }
+//     if (selectionType.id === 'animals') {
+//       matchingOptions = CLASSIFICATION_OPTIONS[targetValue];
+//     } else if (selectionType.id === 'animal-classifications') {
+//       matchingOptions = ANIMAL_OPTIONS[targetValue];
+//     }
 
-    [...selectionType.children].forEach(selectionOption => {
-      if (!matchingOptions.includes(selectionOption.value)) {
-        selectionOption.setAttribute('hidden', 'true');
-      }
-    });
-  }
+//     [...selectionType.children].forEach(selectionOption => {
+//       if (!matchingOptions.includes(selectionOption.value)) {
+//         selectionOption.setAttribute('hidden', 'true');
+//       }
+//     });
+//   }
 
-  classifications.addEventListener('change', (e) => {
-    let targetIndex = e.target.selectedIndex;
-    let currentValue = e.target.options[targetIndex].value;
-    hideOptions(currentValue, animals);
-  });
+//   classifications.addEventListener('change', (e) => {
+//     let targetIndex = e.target.selectedIndex;
+//     let currentValue = e.target.options[targetIndex].value;
+//     hideOptions(currentValue, animals);
+//   });
 
-  animals.addEventListener('change', (e) => {
-    let targetIndex = e.target.selectedIndex;
-    let currentValue = e.target.options[targetIndex].value;
-    hideOptions(currentValue, classifications);
-  });
-});
+//   animals.addEventListener('change', (e) => {
+//     let targetIndex = e.target.selectedIndex;
+//     let currentValue = e.target.options[targetIndex].value;
+//     hideOptions(currentValue, classifications);
+//   });
+// });
+
+/* 
+Requirements:
+- When the user clicks on a navigation link (Articles 1-4), the browser scrolls to that article in the <main> element and adds the highlight class to it. If another element already has the highlight class, the browser removes the class from that element.
+- When the user clicks on an article element or any of its child elements, the browser adds the highlight class to it. If another element already has the highlight class, the browser removes the class from that element.
+- When the user clicks anywhere else on the page, the browser adds the highlight class to the main element. If another element already has the highlight class, the browser removes the class from that element.
+
+- scroll browser window to the selected element
+- add highlight class to selected element
+- any other class that has the highlight class should have it removed
+
+- 
+*/
+
+// function extractId(item) {
+//   const regex = /#([^]*)/;
+//   const matches = item.children[0].href.match(regex);
+  
+//   if (matches) return matches[0];
+//   console.log('articleId not found');
+// }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const ul = document.querySelector('ul');
+//   const listItems = ul.children;
+//   const main = document.querySelector('main');
+//   const mainItems = main.children;
+
+//   document.addEventListener('click', (e) => {
+//     unhighlightAll();
+//     main.classList.add('highlight');
+//   });
+
+//   for (let i = 0; i < listItems.length; i += 1) {
+//     let item = listItems[i];
+//     item.addEventListener('click', (e) => {
+//       e.stopPropagation()
+//       unhighlightAll()
+//       const articleId = extractId(item);
+//       const targetArticle = document.querySelector(articleId);
+//       targetArticle.classList.add('highlight');
+//       item.scrollIntoView();
+//     }, true);
+//   }
+
+//   for (let i = 0; i < mainItems.length; i += 1) {
+//     let mainItem = mainItems[i];
+//     if (mainItem.tagName === 'ARTICLE') {
+//       mainItem.addEventListener('click', (e) => {
+//         e.stopPropagation()
+//         unhighlightAll();
+//         e.currentTarget.classList.add('highlight');
+//       }, true);
+//     }
+//   }
+
+//   function unhighlightAll() {
+//     let highlighted = document.querySelector('.highlight');
+
+//     if (highlighted) {
+//       highlighted.classList.remove('highlight');
+//     }
+//   }
+// });
+
+function delegateEvent(parentElement, selector, eventType, callback) {
+  
+}

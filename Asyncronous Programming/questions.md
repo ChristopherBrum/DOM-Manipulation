@@ -1,0 +1,23 @@
+# Questions for Lesson 2
+
+- [What is sequential code?](./answers/sequential_code.md)
+- [What is asynchronous code?](./answers/asynchronous_code.md)
+- What is `setTimeout`?
+- What is `setInterval`?
+- How do `setTimeout` and `setInterval` alter the execution of code?
+- [What do we mean when we talk about an event?](./answers/event.md)
+- [What is `DOMContentLoaded`?](./answers/dom_content_loaded.md.md)
+- [Describe the lifecycle of a modern webpage.](./answers/lifecycle_of_modern_webpage.md)
+- [What steps are needed to set up an event handler?](./answers/event_handler.md#steps-to-set-up-an-event-handler)
+- [Where can we obtain additional information about an event when creating an event handler?](./answers/event_handler.md#where-can-we-obtain-additional-information-about-an-event-when-creating-an-event-handler)
+- [What's the difference between the `target` and `currentTarget` properties of an `Event` object?](./answers/event_handler.md#whats-the-difference-between-the-target-and-currenttarget-properties-of-an-event-object)
+- [What is the value of `this` within a handler when using a function expression? What about an arrow function?](./answers/event_handler.md#what-is-the-value-of-this-within-a-handler-when-using-a-function-expression-what-about-an-arrow-function)
+- [What is capturing and bubbling?](./answers/capturing_and_bubbling.md)
+- [How and why would we want to stop propagation?](./answers/stop_propagation.md)
+- [How and why would you want to stop default behavior?](./answers/event_delegation.md)
+- [What is Event Delegation?](./answers/event_delegation.md#event-delegation)
+- [What problems does event delegation address?](./answers/event_delegation.md#what-problesm-does-event-delegation-address)
+- [What is the event loop?](./answers/event_loop.md)
+- [What is a promise?](./answers/promises.md)
+- What is async and await?
+- How do events and promises differ?

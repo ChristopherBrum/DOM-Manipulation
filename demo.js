@@ -847,32 +847,57 @@ Requirements:
 //   }
 // });
 
-document.addEventListener('DOMContentLoaded', () => {
-  let store = document.getElementById('store');
+// document.addEventListener('DOMContentLoaded', () => {
+//   let store = document.getElementById('store');
 
-  let request = new XMLHttpRequest();
-  request.open('GET', 'https://ls-230-web-store-demo.herokuapp.com/products');
-  // request.responseType = `json`;
+//   let request = new XMLHttpRequest();
+//   request.open('GET', 'https://ls-230-web-store-demo.herokuapp.com/products');
+//   // request.responseType = `json`;
 
-  request.addEventListener('error', (e) => {
-    console.log("event: ", e);
-    store.innerHTML = request.response
-  });
-  request.send();
+//   request.addEventListener('error', (e) => {
+//     console.log("event: ", e);
+//     store.innerHTML = request.response
+//   });
+//   request.send();
 
-  store.addEventListener('submit', event => {
-    let form = event.target;
+//   store.addEventListener('submit', event => {
+//     let form = event.target;
 
-    event.preventDefault();
-    let request = new XMLHttpRequest();
+//     event.preventDefault();
+//     let request = new XMLHttpRequest();
 
-    let data = new FormData(form);
-    // let data = request.response;
+//     let data = new FormData(form);
+//     // let data = request.response;
 
-    request.open('POST', `https://ls-230-web-store-demo.herokuapp.com${form.getAttribute('action')}`);
-    request.setRequestHeader('Authorization', 'token AUTH_TOKEN');
+//     request.open('POST', `https://ls-230-web-store-demo.herokuapp.com${form.getAttribute('action')}`);
+//     request.setRequestHeader('Authorization', 'token AUTH_TOKEN');
 
-    request.addEventListener('load', event => store.innerHTML = request.response);
-    request.send(data);
-  });
-});
+//     request.addEventListener('load', event => store.innerHTML = request.response);
+//     request.send(data);
+//   });
+// });
+
+// const request = new XMLHttpRequest();
+// request.open('GET', 'https://api.github.com/repos/rails/rails');
+
+// request.addEventListener('load', (e) => {
+//   const data = JSON.parse(request.response);
+//   console.log(request.status);
+//   console.log(data.open_issues);
+// });
+
+// request.addEventListener('error', (e) => {
+//   console.log('The request could not be completed!');
+// });
+
+// request.send();
+
+const request = new XMLHttpRequest();
+request.open('POST', 'https://ls-230-web-store-demo.herokuapp.com/v1/products');
+request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+request.setRequestHeader('Aurthorization', 'token Auth_TOKEN');
+
+const data = { name: 'Backpack', sku: '12345', price: 2500 };
+const json = JSON.stringify(data);
+
+request.send(json);

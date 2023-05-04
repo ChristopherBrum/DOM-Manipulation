@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<title>Grovery List</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link rel='stylesheet' type='text/css' media='screen' href='css/stylesheet.css'>
+	<link rel='stylesheet' type='text/css' media='print' href='css/print.css'>
+	<script src='javascripts/grocery_list.js'></script>
+</head>
+<body>
+	<main>
+		<form action="" method="post">
+			<h2>Add an item</h2>
+			<fieldset>
+				<label for="name">Item name</label>
+				<input type="text" name="name" id="name" />
+				<label for="quantity">Quantity</label>
+				<input type="number" name="quantity" id="quantity" />
+				<input type="submit" value="Add" />
+			</fieldset>
+		</form>
+		<h1>Groceries</h1>
+		<ul id="grocery-list"></ul>
+	</main>
+</body>
+</html>

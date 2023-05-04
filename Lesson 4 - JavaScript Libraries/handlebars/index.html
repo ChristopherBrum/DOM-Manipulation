@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>jQuery Selectors</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script> -->
+		<script src="../handlebars-v4.7.7.js"></script>
+		<script src="index.js"></script>
+  </head>
+  <body>
+		
+		<!-- <script id="post" type="text/x-handlebars">
+			<article>
+				<h1>{{title}}</h1>
+				<p><time>Posted on {{published}}</time></p>
+				{{body}}
+			</article>
+		</script> -->
+
+		<!-- <script>
+			let post = {
+				title: 'Lorem ipsum dolor sit amet',
+				published: 'April 1, 2015',
+				body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'
+			};
+
+			let template = $('#post').html();
+			let templateScript = Handlebars.compile(template);
+			let html = templateScript(post);
+			$(document.body).append(html); -->
+<!-- 
+			// let template = document.getElementById('post').innerHTML;
+			// let templateScript = Handlebars.compile(template);
+			// let html = templateScript(post);
+			// document.querySelector('body').innerHTML = html;
+
+		</script> -->
+
+		<script id="handlebars-demo" type="text/x-handlebars-template">
+			<div>
+				I'm a {{occupation}}. Meet my friends:<br>
+				<ul>
+					{{#if names}}
+						{{#each names}}
+							<li>{{capitalize name}}.</li>
+						{{/each}}
+					{{else}}
+						I have no friends
+					{{/if}}
+				</ul>
+				{{> partialTemplate item="corn"}}
+			</div>
+		</script>
+
+		<script>
+			// Custom Function Helper
+			Handlebars.registerHelper("capitalize", function(word) {
+				let names = word.split(' ');
+				return names.map(name => {
+					return name[0].toUpperCase() + name.slice(1);
+				}).join(' ');
+			});
+
+			// Partial Template
+			Handlebars.registerPartial(
+				'partialTemplate',
+				'Being a {{occupation}} is soooo {{adj}}. I really love {{item}}!'
+			)
+
+			const context = 
+				{ "names" : [
+						{ "name" : "ritesh kumar" }, 
+						{ "name" : "chris brum" }, 
+						{ "name" : "ally fontain"},
+					], 
+					"occupation" : "Pasta Farmer",
+					"adj" :  "radical",
+				};
+
+			let template = $('#handlebars-demo').html();
+			let templateFunction = Handlebars.compile(template);
+			let html = templateFunction(context);
+			$(document.body).append(html);
+		</script>
+
+  </body>
+</html>

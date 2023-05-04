@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>jQuery Selectors</title>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.2/jquery.min.js"></script>
+		<script src="../handlebars-v4.7.7.js"></script>
+		<script src="index.js"></script>
+  </head>
+  <body>
+
+		<div class="message">
+			{{> message headerTag="h1" }}
+		
+			<h1>Comments</h1>
+		
+			{{#each comments}}
+				{{> message headerTag="h2" }}
+			{{/each}}
+		</div>
+
+		<script>
+			
+		</script>
+
+		<!-- <script id="post" type="text/x-handlebars">
+			<article>
+				<h1>{{.title}}</h1>
+				<p><time>Posted on {{published}}</time></p>
+				{{{body}}}
+				Tags: 
+				{{#each tags}}
+					{{> formatTag this}}
+				{{/each}}
+			</article>
+		</script>
+
+		<script id="posts" type="text/x-handlebars">
+			{{#each posts}}
+				<article>
+					<h1>{{title}}</h1>
+					<p><time>Posted on {{published}}</time></p>
+					{{{body}}}
+					{{#if tags}}
+						Tags: 
+						{{#each tags}}
+						{{> formatTag this}}
+						{{/each}}
+					{{else}}
+						Not tagged
+					{{/if}}
+				</article>
+			{{/each}}
+		</script>
+
+		<script>
+			let post = {
+				title: 'Lorem ipsum dolor sit amet',
+				published: 'April 1, 2015',
+				body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.',
+				tags: ['outdoors', 'gossip', 'shark-week', 'cake']
+			};
+			
+			let posts = [
+				{
+					title: 'voluptate velit',
+					published: 'April 2, 2015',
+					body: 'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.'
+				}
+			];
+
+			posts.push(post);
+			
+			// Using jQuery
+			post.body = '<p>' + post.body + '</p>';
+
+			// Partial Template
+			Handlebars.registerPartial(
+				'formatTag',
+				'<i>#{{this}}</i>'
+			)
+
+			// const $template = $('#post').html();
+			// const templateScript = Handlebars.compile($template);
+			// let html = templateScript(post);
+			// $(document.body).append(html);
+
+			const $template = $('#posts').html();
+			const postsTemplate = Handlebars.compile($template);
+			let html = postsTemplate({posts: posts});
+			$(document.body).append(html);
+		</script>		 
+
+		<script>
+			// let post = {
+			// 	title: 'Lorem ipsum dolor sit amet',
+			// 	published: 'April 1, 2015',
+			// 	body: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.'
+			// };
+			// // Using Vanilla JS
+			// const template = document.getElementById('post').innerHTML;
+			// const templateScript = Handlebars.compile(template);
+			// let html = templateScript(post);
+			// document.body.innerHTML = html;
+			
+			$('li').css('font-weight', 'bold');
+
+		</script>		-->
+  </body>
+</html>

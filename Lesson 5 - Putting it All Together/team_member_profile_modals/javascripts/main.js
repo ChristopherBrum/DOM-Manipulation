@@ -23,12 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 	});
 
-	modalX.addEventListener('click', (e) => {
-		hideModal();
-	});
-
 	modalContainer.addEventListener('click', (e) => {
-		if (e.target === modalContainer) {
+		if (e.target === modalContainer || e.target === modalX) {
 			hideModal();
 		}
 	});

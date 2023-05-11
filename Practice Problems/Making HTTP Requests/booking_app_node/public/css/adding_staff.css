@@ -1,0 +1,42 @@
+.styled-form * {
+  margin: 0;
+  padding: 0;
+}
+
+.styled-form fieldset {
+  background-color: #ececec;
+  border: 2px solid #999;
+  box-sizing: border-box;
+  color: #4d4d4d;
+  font-family:
+    myriad-pro, "Helvetica Neue", Helvetica, Roboto,
+    Arial, sans-serif;
+  padding: 1rem;
+  margin: 15px;
+  border-radius: 5px;
+}
+
+.styled-form label {
+  font-weight: bold;
+  line-height: 1.5rem;
+  color: tomato;
+}
+
+.styled-form input[type="text"],
+.styled-form select {
+  border: 1px solid #06c;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font: normal 1rem Helvetica, Arial, sans-serif;
+  height: 40px;
+  padding: 5px 8px;
+  margin-bottom: 5px;
+}
+
+button.submit {
+  padding: 1.25rem 2.5rem;
+  font-size: large;
+  margin: 0 15px;
+  background-color: tomato;
+  border-radius: 5px;
+}

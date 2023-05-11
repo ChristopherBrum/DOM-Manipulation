@@ -892,12 +892,14 @@ Requirements:
 
 // request.send();
 
-const request = new XMLHttpRequest();
-request.open('POST', 'https://ls-230-web-store-demo.herokuapp.com/v1/products');
-request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-request.setRequestHeader('Aurthorization', 'token Auth_TOKEN');
+// const request = new XMLHttpRequest();
+// request.open('POST', 'https://ls-230-web-store-demo.herokuapp.com/v1/products');
+// request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+// request.setRequestHeader('Aurthorization', 'token Auth_TOKEN');
 
-const data = { name: 'Backpack', sku: '12345', price: 2500 };
-const json = JSON.stringify(data);
+// const data = { name: 'Backpack', sku: '12345', price: 2500 };
+// const json = JSON.stringify(data);
 
-request.send(json);
+// request.send(json);
+
+

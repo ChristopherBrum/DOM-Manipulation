@@ -1,16 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-	// const promise = new Promise(function(resolve, reject) {
-	// 	const data = fetch('https://api.weather.gov/products');
-	// 	resolve(data);	
-	// });
+function getWeather() {
+	return new Promise(function(resolve, reject) {
+		fetch('https://api.weather.gov/gridpoints/TOP/31,80/forecast')
+			.then((response) => response.json())
+			.then((data) => resolve(data.properties.periods[0].shortForecast))
+			.catch((err) => reject(err));
+	});
+}
 
-	// promise
-	// 	.then((data) => console.log(data))
-	// 	.catch((err) => console.log(err))
-	// 	.finally(() => console.log("it's over now"));
+function onSuccess(weather) {
+	console.log(weather);
+}
 
-	const request = new XMLHttpRequest();
-	request.open('GET', 'https://api.weather.gov/points/39.7456,-97.0892');
-	
-	document.addEventListener('load')
-});
+function onError(error) {
+	console.log('Error:', error);
+}
+
+getWeather()
+	.then(onSuccess)
+	.catch(onError);

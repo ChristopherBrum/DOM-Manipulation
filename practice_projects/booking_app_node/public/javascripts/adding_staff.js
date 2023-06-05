@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			}).catch((response) => {
 				alert(`${response.status}: ${response.statusText}`);
 			});
-
-		}
-	})
+		};
+	});
 });

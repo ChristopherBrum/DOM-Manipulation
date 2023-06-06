@@ -6,3 +6,18 @@ body {
 a {
   color: #00B7FF;
 }
+
+.container {
+  border: 1px gray solid;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+ul {
+  text-decoration: none;
+}
+
+.schedule-container {
+  border: 1px black solid;
+}

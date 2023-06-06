@@ -7,24 +7,47 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link rel='stylesheet' type='text/css' href='stylesheets/style.css'>
 	<script src="javascripts/adding_staff.js"></script>
+	<script src="javascripts/adding_schedules.js"></script>
 	<script src='main.js'></script>
 </head>
 <body>
-	<form>
-		<h2> Add a new Staff Member</h2>
-		<fieldset>
-			<div>
-				<label for="email">Email:</label>
-				<input id="email" type="text" name="email">
-			</div>
-			<div>
-				<label for="name">Name:</label>
-				<input id="name" type="text" name="name">
-			</div>
-		</fieldset>
-		<fieldset>
-			<button id="submit-btn" type="submit">Submit</button>
-		</fieldset>
-	</form>
+	<div class="container">
+		<form>
+			<h2> Add a new Staff Member</h2>
+			<fieldset>
+				<div>
+					<label for="email">Email:</label>
+					<input id="email" type="text" name="email">
+				</div>
+				<div>
+					<label for="name">Name:</label>
+					<input id="name" type="text" name="name">
+				</div>
+			</fieldset>
+			<fieldset>
+				<button id="submit-btn" type="submit">Submit</button>
+			</fieldset>
+		</form>
+	</div>
+	<div class="container">
+		<button id="add-schedule">AddMore Schedules</button>
+		<ul id="schedules">
+			<li class="schedule-container">
+				<div>
+					<label>Staff Name:</label>
+					<select id="staff-names"></select>
+				</div>
+				<div>
+					<label>Date:</label>
+					<input>
+				</div>
+				<div>
+					<label>Time:</label>
+					<input>
+				</div>
+			</li>
+		</ul>
+		<button id="submit-schedules">Submit</button>
+	</div>
 </body>
 </html>

@@ -3,8 +3,16 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 a {
   color: #00B7FF;
+}
+
+input {
+  margin: 5px 0;
 }
 
 .container {
@@ -12,12 +20,21 @@ a {
   border-radius: 5px;
   padding: 20px;
   margin-top: 15px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 ul {
-  text-decoration: none;
+  list-style: none;
 }
 
 .schedule-container {
+  margin-left: -40px;
+  margin-top: 15px;
   border: 1px black solid;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.submit-btn {
+  margin-top: 13px;
 }

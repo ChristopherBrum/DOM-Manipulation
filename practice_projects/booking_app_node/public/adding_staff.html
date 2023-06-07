@@ -8,9 +8,11 @@
 	<link rel='stylesheet' type='text/css' href='stylesheets/style.css'>
 	<script src="javascripts/adding_staff.js"></script>
 	<script src="javascripts/adding_schedules.js"></script>
+	<script src="javascripts/booking_time_slots.js"></script>
 	<script src='main.js'></script>
 </head>
 <body>
+	<h1>Booking Application</h1>
 	<div class="container">
 		<form>
 			<h2> Add a new Staff Member</h2>
@@ -24,30 +26,40 @@
 					<input id="name" type="text" name="name">
 				</div>
 			</fieldset>
-			<fieldset>
-				<button id="submit-btn" type="submit">Submit</button>
-			</fieldset>
+			<button class="submit-btn" type="submit">Add Staff Member</button>
 		</form>
 	</div>
 	<div class="container">
-		<button id="add-schedule">AddMore Schedules</button>
+		<h2> Add Schedules for a Staff Member</h2>
+		<button id="add-schedule">Add Another Schedules</button>
 		<ul id="schedules">
 			<li class="schedule-container">
-				<div>
+				<h3 class="schedule-title"></h3>
+				<div id="select-container">
 					<label>Staff Name:</label>
-					<select id="staff-names"></select>
 				</div>
 				<div>
 					<label>Date:</label>
-					<input>
+					<input class="schedule-input" type="date" >
 				</div>
 				<div>
 					<label>Time:</label>
-					<input>
+					<input class="schedule-input" type="time">
 				</div>
 			</li>
 		</ul>
-		<button id="submit-schedules">Submit</button>
+		<button id="submit-schedules">Add Schedule(s)</button>
+	</div>
+	<div class="container">
+		<h2>Book a Timelot with a Staff Member</h2>
+		<div id="open-timeslot-dropdown">
+			<label>Please select one schedule:</label>
+		</div>
+		<div>
+			<label>Email:</label>
+			<input type="text">
+		</div>
+		<button class="submit-btn" id="book-timeslot">Book Timeslot</button>
 	</div>
 </body>
 </html>

@@ -97,7 +97,7 @@ async function loadDropdown() {
 	const staffMembers = await fetchAllStaffMembers();
 	const openTimeSlots = await fetchOpenTimeSlots(staffMembers);
 	const dropdown = document.createElement('select');
-	dropdown.classList.add('select-container', 'schedule-input');
+	dropdown.classList.add('select-container', 'booking-input');
 
 	openTimeSlots.forEach((timeSlot) => {
 		const name = staffMembers.find((staff) => staff.id === timeSlot.staff_id).name;
@@ -107,16 +107,160 @@ async function loadDropdown() {
 		dropdown.appendChild(option);
 	});
 
-	const dropdownContainer =	document.getElementById('open-timeslot-dropdown');
+	const dropdownContainer =	document.getElementById('booking-dropdown');
 	dropdownContainer.appendChild(dropdown);
+}
+
+function removeDropdown() {
+	const dropdownContainer =	document.getElementById('booking-dropdown');
+	dropdownContainer.innerHTML = '';
+	const label = document.createElement('label');
+	label.textContent = 'Please select one schedule: ';
+	dropdownContainer.appendChild(label);
+}
+
+function isInvalidEmail(email) {
+	const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isInvalid = !emailPattern.test(email);
+	if (isInvalid || isEmptyString(email)) alert('Check that your email is correct');
+	return isInvalid;
+}
+
+function isEmptyString(value) {
+	return value.length < 1;
+}
+
+function createRegistrationForm(email, booking_sequence) {
+	const container = document.getElementById('registration-container');
+	container.innerHTML = '';
+
+	if (!container.classList.contains('registration')) {
+		container.classList.add('registration', 'container');
+	}
+
+	const header = document.createElement('h2');
+	header.textContent = 'Please provide new student details';
+	container.appendChild(header);
+
+	['Email', 'Name', 'Booking Sequence'].forEach((description) => {
+		const div = document.createElement('div');
+		const label = document.createElement('label');
+		label.textContent = description + ': ';
+		const input = document.createElement('input');
+		if (description === 'Email') {
+			input.value = email;
+		} else if (description === 'Name') {
+			input.classList.add('name');
+		} else if (description === 'Booking Sequence') {
+			input.value = booking_sequence;
+		}
+		div.append(label, input);
+		container.appendChild(div);
+	})
+
+	const registrationButton = document.createElement('button');
+	registrationButton.textContent = 'Register new student'
+	registrationButton.id = 'submit-registration';
+	container.appendChild(registrationButton);
+}
+
+async function bookTimeSlot(studentData) {
+	try {
+		const response = await fetch('/api/bookings', {
+			method: 'POST',
+			body: JSON.stringify(studentData),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			
+		if (response.status === 201 || response.status === 204) {
+			alert('Booked');
+			reset();
+			return;
+		} 
+			
+		const responseMessage = await response.text();
+		alert(responseMessage);
+		return Number(responseMessage.split(' ').at(-1));
+	}	catch (err) {
+		console.log(err)
+	}
+
+	return booking_sequence;
+}
+
+async function registerStudent(studentData) {
+	let success;
+
+	try {
+		const response = await fetch('/api/students', {
+			method: 'POST',
+			body: JSON.stringify(studentData),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		
+		if (response.status === 201 || response.status === 204) {
+			alert('Successfully added student to the database');
+			success = true;
+		} else {
+			console.log(response.status);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+
+	return success;
+}
+
+async function reset() {
+	removeDropdown()
+	loadDropdown()
+	document.getElementById('booking-email').value = '';
+	const container = document.getElementById('registration-container')
+	container.innerHTML = '';
+	container.classList.remove('registration', 'container')
 }
 
 document.addEventListener('DOMContentLoaded', () => {
 	loadDropdown();
-	const bookTimeSlotSubmit = document.getElementById('book-timeslot');
+	const bookTimeSlotSubmit = document.getElementById('booking-submit');
 	
-	bookTimeSlotSubmit.addEventListener('click', (e) => {
-		const dropdown = document.getElementById('open-timeslot-dropdown');
-		console.log(dropdown.value)
-	})
+	bookTimeSlotSubmit.addEventListener('click', async (e) => {
+		const inputs = document.querySelectorAll('.booking-input');
+		const scheduleId = inputs[0].value;
+		const studentEmail = inputs[1].value.trim();
+			
+		if (isInvalidEmail(studentEmail)) return;
+
+		const bookingData = {
+			id: scheduleId,
+			student_email: studentEmail,
+		};
+
+		const booking_sequence = await bookTimeSlot(bookingData);
+		if (booking_sequence) {
+			createRegistrationForm(studentEmail, booking_sequence);
+			const registrationSubmit = document.getElementById('submit-registration');
+			registrationSubmit.addEventListener('click', async () => {
+				const studentName = document.querySelector('.name').value.trim();
+
+				if (isEmptyString(studentName)) {
+					alert('Check your inputs');
+					return;
+				} 
+	
+				const studentData = {
+					email: studentEmail,
+					name: studentName,
+					booking_sequence,
+				}
+
+				const registrationSuccessful = registerStudent(studentData);
+				if (registrationSuccessful) bookTimeSlot(bookingData);
+			});
+		}
+	});
 });

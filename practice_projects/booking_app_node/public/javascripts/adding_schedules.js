@@ -53,6 +53,7 @@ function addSchedules(schedules) {
 	.then((response) => {
 		if (response.status === 201) {
 			alert('Schedule(s) added successfully');
+			reset();
 		} else {
 			console.log(`Status Code: ${response.status}, ${response.statusText}`);
 		}
@@ -68,6 +69,16 @@ function formatScheduleData(inputValues) {
 		date,
 		time,
 	}
+}
+
+function resetScheduleContainer() {
+	const scheduleTemplate = document.querySelector('.schedule-container');
+	const clone = scheduleTemplate.cloneNode(true);
+	const schedules = document.getElementById('schedules');
+	schedules.innerHTML = '';
+	const inputs = clone.querySelectorAll('input');
+	inputs.forEach((input) => input.value = '');
+	schedules.appendChild(clone);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -102,5 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			newSchedules.push(formatScheduleData(inputValues));
 		});
 		addSchedules({schedules: newSchedules});
+		resetScheduleContainer()
 	});
 });

@@ -1,9 +1,14 @@
 body {
+  background-color: rgba(172, 255, 47, 0.35);
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+div {
+  background-color: white;
 }
 
 h1 {
@@ -27,11 +32,30 @@ select {
   border-radius: 5px;
   padding: 20px;
   margin-top: 15px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
 }
 
 ul {
   list-style: none;
+}
+
+.booking-list {
+  list-style: disc;
+  border: 1px black solid;
+  padding: 25px 25px;
+}
+
+.booking-item {
+  padding: 5px;
+}
+
+.dark-background {
+  background-color: rgba(128, 128, 128, 0.15);
+
+}
+
+.sub-list {
+  list-style: circle; 
 }
 
 .schedule-container {

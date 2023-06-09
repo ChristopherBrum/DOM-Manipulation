@@ -10,6 +10,7 @@
 	<script src="javascripts/adding_schedules.js"></script>
 	<script src="javascripts/booking_time_slots.js"></script>
 	<script src="javascripts/viewing_booking.js"></script>
+	<script src="javascripts/cancellations.js"></script>
 	<script src='main.js'></script>
 </head>
 <body>
@@ -68,5 +69,23 @@
 		<h2>Bookings</h2>
 		<ul id="bookings"></ul>
 	</div>
+	<form class="container">
+		<div>
+			<h2>Cancel Schedule</h2>
+			<div id="cancel-schedule-dropdown">
+				<label>Choose Schedule: </label>	
+			</div>
+			<button type="submit" id="cancel-schedule-btn" class="submit-btn">Cancel Schedule</button>
+		</div>
+	</form>
+	<form class="container">
+		<div>
+			<h2>Cancel Booking</h2>
+			<div id="cancel-booking-dropdown">
+				<label>Choose Booking: </label>
+			</div>
+			<button type="submit" id="cancel-booking-btn" class="submit-btn">Cancel Booking</button>
+		</div>
+	</form>
 </body>
 </html>

@@ -72,13 +72,6 @@ function populateDropdown(data, idName, className, staffMembers) {
 }
 
 async function createScheduleCancellationDropdown(staffMembers, schedules) {
-	// const dropdownContainer = document.getElementById('cancel-schedule-dropdown');
-	// const label = dropdownContainer.children[0];
-	// const childElements = dropdownContainer.querySelectorAll('*');
-	// childElements.forEach((child) => {
-	// 	child.remove();
-	// });
-	// dropdownContainer.appendChild(label);
 	schedules = filterUnbookedSchedules(schedules);
 	const schedulesDropdown = populateDropdown(schedules, 'schedules-dropdown', 'schedules-dropdown-option', staffMembers);
 	document.getElementById('cancel-schedule-dropdown').append(schedulesDropdown);
@@ -103,7 +96,7 @@ async function deleteSchedule(id) {
 			message = await response.text();
 			console.log(message);
 		}
-	
+
 		return message;
 	} catch (err) {
 		console.log(err);
@@ -143,9 +136,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 		const select = document.getElementById('cancel-schedule-dropdown').children[1];
 		const option = select.options[select.selectedIndex];
 		const selectedScheduleId = select.options[select.selectedIndex].dataset.scheduleId;
-		
+
 		if (await deleteSchedule(selectedScheduleId)) return;
-		console.log('hi')
+
 		option.remove();
 	});
 	
@@ -157,7 +150,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 		if (await removeBooking(selectedBookingId)) return;
 		if (await deleteSchedule(selectedBookingId)) return;
-		
+
 		option.remove();
 	});
 

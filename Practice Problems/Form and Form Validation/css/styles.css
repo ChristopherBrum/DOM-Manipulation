@@ -1,0 +1,45 @@
+html {
+	background-color: #52be43;
+}
+
+body {
+	margin: 80px;
+}
+
+form {
+	width: 800px;
+	margin: 15px auto;
+	background: #fff;
+	padding: 20px;
+	border-radius: 4px;
+	background-color: white;
+}
+
+h1 {
+	color: white;
+	font-size: x-large;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	margin: 25px 0;
+}
+
+input {
+	width: 300px;
+	padding: 10px;
+	margin-top: 5px;
+	border: 0.5px rgba(128, 128, 128, 0.5) solid;
+	border-radius: 4px;
+}
+
+button {
+	background-color: #52be43;
+	border: 0.5px rgba(128, 128, 128, 0.1) solid;
+	border-radius: 4px;
+	padding: 5px 20px;
+	color: white;
+	font-size: large;
+	font-weight: 900;
+}

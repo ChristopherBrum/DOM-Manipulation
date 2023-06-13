@@ -10,26 +10,41 @@
 </head>
 <body>
 	<h1>Sign up Form</h1>
-	<form>
+	<form novalidate>
 		<div class="input-container">
 			<label for="firstName">First Name:</label>
-			<input type="text" id="first-name" name="firstName" required>
+			<div class="input-flash-ccontainer">
+				<input type="text" id="first-name" name="firstName" required>
+				<p id="first-name-flash" class="flash"></p>
+			</div>
 		</div>
 		<div class="input-container">
 			<label for="lastName">Last Name:</label>
-			<input type="text" id="last-name" name="lastName" required>
+			<div class="input-flash-ccontainer">
+				<input type="text" id="last-name" name="lastName" required>
+				<p id="last-name-flash" class="flash"></p>
+			</div>
 		</div>
 		<div class="input-container">
 			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" placeholder="someone@example.com" required>
+			<div class="input-flash-ccontainer">
+				<input type="email" id="email" name="email" placeholder="someone@example.com" required>
+				<p id="email-flash" class="flash"></p>
+			</div>
 		</div>
 		<div class="input-container">
 			<label for="password">Password</label>
-			<input type="password" id="password" name="password" required>
+			<div class="input-flash-ccontainer">
+				<input type="password" id="password" name="password" required>
+				<p id="password-flash" class="flash"></p>
+			</div>
 		</div>
 		<div class="input-container">
 			<label for="phone">Phone Number</label>
-			<input type="tel" id="phone" name="phone" placeholder="111-222-3333" required>
+			<div class="input-flash-ccontainer">
+				<input type="phone" id="phone" name="phone" placeholder="(111) 222-3333">
+				<p id="phone-flash" class="flash"></p>
+			</div>
 		</div>
 		<button type="submit">Sign Up</button>
 	</form>

@@ -4,6 +4,7 @@ html {
 
 body {
 	margin: 80px;
+	font-size: 18px;
 }
 
 form {
@@ -42,4 +43,17 @@ button {
 	color: white;
 	font-size: large;
 	font-weight: 900;
+}
+
+.input-flash-ccontainer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.flash {
+	margin: 0;
+	padding: 0;
+	margin-left: 20px;
+	color: #a93333;
 }

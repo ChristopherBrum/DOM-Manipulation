@@ -82,15 +82,15 @@ class LanguageFormatter {
 		this.addDescriptionHandler.call(this);
 	}
 
-	// createTemplate() {
-	// 	return `
-	// 		<div>
-	// 			<h1>{{language_name}}</h1>
-	// 			<p class="full">{{description}}</p>
-	// 			<a class="language-button {{class_name}}">{{button_text}}</a>
-	// 		</div>
-	// 	`;
-	// }
+	createTemplate() {
+		return `
+			<div>
+				<h2>{{language}}</h2>
+				<p class="full">{{description}}</p>
+				<a class="language-button {{class_name}}">{{button_text}}</a>
+			</div>
+		`;
+	}
 
 	formatDescription(description, anchor) {
 		if (description.length < 120) {
@@ -103,15 +103,17 @@ class LanguageFormatter {
 	
 	populateContainer() {
 		for (let language of this.languages) {
+			const template = Handlebars.compile(this.createTemplate());
+			const html = template({
+				language: language.name, 
+				description: language.description, 
+				class_name: language.name.toLowerCase(), 
+				button_text: "Show More"
+			});
+
 			const div = document.createElement('div');
-			const header = document.createElement('h2');
-			const paragraph = document.createElement('p');
-			const anchor = document.createElement('a');
-			paragraph.classList.add('full');
-			anchor.classList.add('language-button', language.name.toLowerCase());
-			header.textContent = language.name;
-			div.append(header, paragraph, anchor);
-			this.toggleDescriptionContent(div);
+			div.innerHTML = html;
+			this.toggleDescriptionContent(div.firstElementChild);
 			this.container.appendChild(div);
 		}
 	}
@@ -138,7 +140,7 @@ class LanguageFormatter {
 				console.log(this)
 				self.toggleDescriptionContent(parentDiv);
 			}
-		})
+		});
 	}
 }
 

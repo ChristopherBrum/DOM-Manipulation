@@ -1,0 +1,9 @@
+body {
+	background: #eee9ce;
+	font-size: 18px;
+}
+
+#container {
+	width: 600px;
+	margin: 20px auto;
+}
